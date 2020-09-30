@@ -34,7 +34,7 @@ class PaymentService
             $clientName = config('app.name');
             $language = 'en';
             $countryCodes = ['US'];
-            $clientUserId = 1;// auth()->id();
+            $clientUserId = 1;// TODO: auth()->id();
             $products = ['auth', 'transactions'];
             return $this->plaid->createLinkToken($clientName, $language, $countryCodes, $clientUserId, $products);
 //            [
@@ -66,7 +66,7 @@ class PaymentService
             $account = Account::create([
                 'country' => 'US',
                 'type' => 'custom',
-                'email' => 'jenny.rosen@example.com', //\auth()->user()->email, //'jenny.rosen@example.com',
+                'email' => 'jenny.rosen@example.com', // TODO: \auth()->user()->email,
                 'capabilities' => [
                     'transfers' => ['requested' => true],
                 ],
@@ -94,11 +94,11 @@ class PaymentService
      */
     public function withdrawal()
     {
-        $accountID = "acct_1HVDTrIo3OQqINzl";// \auth()->user()->stripe_account_id; //"acct_1HVDTrIo3OQqINzl"
+        $accountID = "acct_1HVDTrIo3OQqINzl";// TODO: \auth()->user()->stripe_account_id;
         if(!$accountID) abort(500, 'User not connected to the bank!');
 
         try {
-            $amount = 50; // 50 USD
+            $amount = 50; // 50 USD - TODO: amount
 
             // transfer
             $data = \Stripe\Transfer::create([

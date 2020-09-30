@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//Route::middleware('auth')->group(function () {
+//Route::middleware('auth')->group(function () { // TODO:
     Route::prefix('/payment')->group(function () {
         /*
          * Since this is an example the api will be written here for ease of visualization
@@ -39,6 +39,6 @@ Route::get('/', function () {
         // Step 5: API - withdrawal
         Route::get('/withdrawal', 'App\Http\Controllers\PaymentController@withdrawal')->name('payment.withdrawal');
 
-        // Cân 1 API để lấy thông tin bank name để hiển thị ở app nếu cần.
+        // TODO: Cân 1 API để lấy thông tin bank name để hiển thị ở app nếu cần.
     });
 //});
