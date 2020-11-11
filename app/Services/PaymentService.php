@@ -71,7 +71,31 @@ class PaymentService
                     'transfers' => ['requested' => true],
                 ],
                 'external_account' => $data->stripe_bank_account_token // "btok_1HWwHiDcipPMJ2hZ7vV2bOPx",
+                // TODO: need last name, website link, terms accept (gui kem ip la dc)
             ]);
+            // Full example
+//            $account = Account::create([
+//                'country' => 'US',
+//                'type' => 'custom',
+//                'business_type' => 'individual', //require
+//                'individual' => [ //require
+//                    'email' => Auth::user()->email,
+//                    'first_name' => Auth::user()->fullname,
+//                    'last_name' => Auth::user()->fullname,
+//                    // 'business_website' => 'quichef.com'
+//                ],
+//                'business_profile'=>[ //require
+//                    'url'=>'quichef.com'
+//                ],
+//                'requested_capabilities' => [ 'transfers'], //require
+//                'email' => Auth::user()->email, //require
+//                'external_account' => $data->stripe_bank_account_token,
+//                'tos_acceptance' => [ //require
+//                    'date' => time(),
+//                    'ip' => $_SERVER['REMOTE_ADDR'],
+//                ],
+//                'default_currency'=> Auth::user()->currency
+//            ]);
 
             // Save account_id ($account->id) and $accountName to user (chef)
             \auth()->user()->update([
